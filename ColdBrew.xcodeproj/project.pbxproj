@@ -13,6 +13,7 @@
 		C2B486EA1A1680EC007FFDEE /* StatusItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B486E91A1680EC007FFDEE /* StatusItemController.m */; };
 		C2B486F11A16A838007FFDEE /* NSMenuItem+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B486F01A16A838007FFDEE /* NSMenuItem+Additions.m */; };
 		C2B486FD1A16ABD7007FFDEE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2B486FC1A16ABD7007FFDEE /* Images.xcassets */; };
+		C2B487041A16B156007FFDEE /* MPLoginItems.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B487031A16B156007FFDEE /* MPLoginItems.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,8 @@
 		C2B486EF1A16A838007FFDEE /* NSMenuItem+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMenuItem+Additions.h"; sourceTree = "<group>"; };
 		C2B486F01A16A838007FFDEE /* NSMenuItem+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMenuItem+Additions.m"; sourceTree = "<group>"; };
 		C2B486FC1A16ABD7007FFDEE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C2B487021A16B156007FFDEE /* MPLoginItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPLoginItems.h; sourceTree = "<group>"; };
+		C2B487031A16B156007FFDEE /* MPLoginItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPLoginItems.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,7 @@
 				C2B486E91A1680EC007FFDEE /* StatusItemController.m */,
 				C2B486EF1A16A838007FFDEE /* NSMenuItem+Additions.h */,
 				C2B486F01A16A838007FFDEE /* NSMenuItem+Additions.m */,
+				C2B487051A16B25E007FFDEE /* Vendor */,
 				C2B486D11A168065007FFDEE /* MainMenu.xib */,
 				C2B486FC1A16ABD7007FFDEE /* Images.xcassets */,
 				C2B486C81A168065007FFDEE /* Supporting Files */,
@@ -82,6 +86,15 @@
 				C2B486CD1A168065007FFDEE /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C2B487051A16B25E007FFDEE /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				C2B487021A16B156007FFDEE /* MPLoginItems.h */,
+				C2B487031A16B156007FFDEE /* MPLoginItems.m */,
+			);
+			name = Vendor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +186,7 @@
 			files = (
 				C2B486F11A16A838007FFDEE /* NSMenuItem+Additions.m in Sources */,
 				C2B486CE1A168065007FFDEE /* main.m in Sources */,
+				C2B487041A16B156007FFDEE /* MPLoginItems.m in Sources */,
 				C2B486EA1A1680EC007FFDEE /* StatusItemController.m in Sources */,
 				C2B486CC1A168065007FFDEE /* AppDelegate.m in Sources */,
 			);
