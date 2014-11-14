@@ -7,6 +7,7 @@
 //
 
 #import <IOKit/pwr_mgt/IOPMLib.h>
+#import "NSBundle+LoginItem.h"
 #import "NSMenuItem+Additions.h"
 #import "StatusItemController.h"
 
@@ -51,12 +52,37 @@ static NSString * const AssertionReason = @"User activated Cold Brew";
 - (NSMenu *)statusMenu
 {
   NSMenu *menu = [[NSMenu alloc] init];
+
+  NSMenuItem *loginItem = [NSMenuItem itemWithTitle:NSLocalizedString(@"Start At Login", nil)
+                                             target:self
+                                             action:@selector(toggleStartAtLogin:)];
+  loginItem.state = [self openAtLoginState];
+
   NSMenuItem *quitItem = [NSMenuItem itemWithTitle:NSLocalizedString(@"Quit", nil)
                                             target:self
                                             action:@selector(quit)];
+
+  [menu addItem:loginItem];
+  [menu addItem:[NSMenuItem separatorItem]];
   [menu addItem:quitItem];
 
   return menu;
+}
+
+- (void)toggleStartAtLogin:(NSMenuItem *)item
+{
+  if ([[NSBundle mainBundle] isLoginItem]) {
+    [[NSBundle mainBundle] removeFromLoginItems];
+  } else {
+    [[NSBundle mainBundle] addToLoginItems];
+  }
+
+  item.state = [self openAtLoginState];
+}
+
+- (NSCellStateValue)openAtLoginState
+{
+  return [[NSBundle mainBundle] isLoginItem] ? NSOnState : NSOffState;
 }
 
 - (void)quit
