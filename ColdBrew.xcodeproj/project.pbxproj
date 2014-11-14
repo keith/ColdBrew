@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		C2B486CC1A168065007FFDEE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B486CB1A168065007FFDEE /* AppDelegate.m */; };
 		C2B486CE1A168065007FFDEE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B486CD1A168065007FFDEE /* main.m */; };
-		C2B486D01A168065007FFDEE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2B486CF1A168065007FFDEE /* Images.xcassets */; };
 		C2B486D31A168065007FFDEE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2B486D11A168065007FFDEE /* MainMenu.xib */; };
 		C2B486EA1A1680EC007FFDEE /* StatusItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B486E91A1680EC007FFDEE /* StatusItemController.m */; };
+		C2B486F11A16A838007FFDEE /* NSMenuItem+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B486F01A16A838007FFDEE /* NSMenuItem+Additions.m */; };
+		C2B486FD1A16ABD7007FFDEE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2B486FC1A16ABD7007FFDEE /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +21,12 @@
 		C2B486CA1A168065007FFDEE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C2B486CB1A168065007FFDEE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C2B486CD1A168065007FFDEE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C2B486CF1A168065007FFDEE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C2B486D21A168065007FFDEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		C2B486E81A1680EC007FFDEE /* StatusItemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusItemController.h; sourceTree = "<group>"; };
 		C2B486E91A1680EC007FFDEE /* StatusItemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusItemController.m; sourceTree = "<group>"; };
+		C2B486EF1A16A838007FFDEE /* NSMenuItem+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMenuItem+Additions.h"; sourceTree = "<group>"; };
+		C2B486F01A16A838007FFDEE /* NSMenuItem+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMenuItem+Additions.m"; sourceTree = "<group>"; };
+		C2B486FC1A16ABD7007FFDEE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +66,10 @@
 				C2B486CB1A168065007FFDEE /* AppDelegate.m */,
 				C2B486E81A1680EC007FFDEE /* StatusItemController.h */,
 				C2B486E91A1680EC007FFDEE /* StatusItemController.m */,
-				C2B486CF1A168065007FFDEE /* Images.xcassets */,
+				C2B486EF1A16A838007FFDEE /* NSMenuItem+Additions.h */,
+				C2B486F01A16A838007FFDEE /* NSMenuItem+Additions.m */,
 				C2B486D11A168065007FFDEE /* MainMenu.xib */,
+				C2B486FC1A16ABD7007FFDEE /* Images.xcassets */,
 				C2B486C81A168065007FFDEE /* Supporting Files */,
 			);
 			path = ColdBrew;
@@ -137,7 +142,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2B486D01A168065007FFDEE /* Images.xcassets in Resources */,
+				C2B486FD1A16ABD7007FFDEE /* Images.xcassets in Resources */,
 				C2B486D31A168065007FFDEE /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,6 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2B486F11A16A838007FFDEE /* NSMenuItem+Additions.m in Sources */,
 				C2B486CE1A168065007FFDEE /* main.m in Sources */,
 				C2B486EA1A1680EC007FFDEE /* StatusItemController.m in Sources */,
 				C2B486CC1A168065007FFDEE /* AppDelegate.m in Sources */,

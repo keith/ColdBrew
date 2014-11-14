@@ -7,6 +7,7 @@
 //
 
 #import <IOKit/pwr_mgt/IOPMLib.h>
+#import "NSMenuItem+Additions.h"
 #import "StatusItemController.h"
 
 @interface StatusItemController ()
@@ -38,16 +39,29 @@ static NSString * const AssertionReason = @"User activated Cold Brew";
 - (void)setupStatusItem
 {
   self.statusItem = [[NSStatusBar systemStatusBar]
-                     statusItemWithLength:NSVariableStatusItemLength];
-  self.statusItem.target = self;
-  self.statusItem.action = @selector(statusItemClicked:);
-  NSImage *image = nil;
-  if (self.on) {
-    image = nil;
-  }
+                     statusItemWithLength:NSSquareStatusItemLength];
+  self.statusItem.highlightMode = YES;
+  self.statusItem.button.target = self;
+  self.statusItem.button.action = @selector(statusItemClicked:);
+  NSInteger mask = NSLeftMouseDownMask | NSRightMouseDownMask;
+  [self.statusItem.button sendActionOn:mask];
+  [self setImage:self.on];
+}
 
-  // image
-  self.statusItem.image = [NSImage imageNamed:NSImageNameFolder];
+- (NSMenu *)statusMenu
+{
+  NSMenu *menu = [[NSMenu alloc] init];
+  NSMenuItem *quitItem = [NSMenuItem itemWithTitle:NSLocalizedString(@"Quit", nil)
+                                            target:self
+                                            action:@selector(quit)];
+  [menu addItem:quitItem];
+
+  return menu;
+}
+
+- (void)quit
+{
+  [[NSApplication sharedApplication] terminate:self];
 }
 
 - (void)tearDown
@@ -65,10 +79,38 @@ static NSString * const AssertionReason = @"User activated Cold Brew";
   self.statusItem = nil;
 }
 
+- (BOOL)isRightClick
+{
+  NSEvent *currentEvent = [NSApp currentEvent];
+  BOOL rightClick = currentEvent.type == NSRightMouseDown;
+  BOOL controlClick = (currentEvent.modifierFlags & NSControlKeyMask) == NSControlKeyMask;
+  return rightClick || controlClick;
+}
+
 - (void)statusItemClicked:(NSStatusItem *)sender
 {
+  NSLog(@"Action");
+  if ([self isRightClick]) {
+    NSLog(@"Was right click");
+    [self.statusItem popUpStatusItemMenu:[self statusMenu]];
+    return;
+  }
+
   self.on = !self.on;
+  [self setImage:self.on];
   [self caffinate:self.on];
+}
+
+- (void)setImage:(BOOL)active
+{
+  NSString *imageName = @"inactive";
+  if (active) {
+    imageName = @"active";
+  }
+
+  NSImage *image = [NSImage imageNamed:imageName];
+  [image setTemplate:YES];
+  self.statusItem.image = image;
 }
 
 - (void)caffinate:(BOOL)keepAwake
