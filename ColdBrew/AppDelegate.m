@@ -21,13 +21,6 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
   self.statusItemController = [[StatusItemController alloc] initWithState:NO];
-  NSURL *URL = [[NSBundle mainBundle] bundleURL];
-  NSLog(@"E: %@", [MPLoginItems loginItemExists:URL] ? @"Yes": @"NO");
-  if ([MPLoginItems loginItemExists:URL]) {
-    [MPLoginItems removeLoginItemWithURL:URL];
-  } else {
-    [MPLoginItems addLoginItemWithURL:URL];
-  }
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification

@@ -14,8 +14,8 @@
 @interface StatusItemController ()
 
 @property (nonatomic) BOOL on;
-@property (nonatomic) NSStatusItem *statusItem;
 @property (nonatomic) IOPMAssertionID assertionID;
+@property (nonatomic) NSStatusItem *statusItem;
 
 @end
 
@@ -52,8 +52,7 @@ static NSString * const AssertionReason = @"User activated Cold Brew";
 - (NSMenu *)statusMenu
 {
   NSMenu *menu = [[NSMenu alloc] init];
-
-  NSMenuItem *loginItem = [NSMenuItem itemWithTitle:NSLocalizedString(@"Start At Login", nil)
+  NSMenuItem *loginItem = [NSMenuItem itemWithTitle:NSLocalizedString(@"Open At Login", nil)
                                              target:self
                                              action:@selector(toggleStartAtLogin:)];
   loginItem.state = [self openAtLoginState];
@@ -94,9 +93,7 @@ static NSString * const AssertionReason = @"User activated Cold Brew";
 {
   if (self.on) {
     BOOL success = [self removeAssertion];
-    if (success) {
-      NSLog(@"ColdBrew teardown success");
-    } else {
+    if (!success) {
       NSLog(@"ColdBrew teardown failed");
     }
   }
@@ -115,15 +112,12 @@ static NSString * const AssertionReason = @"User activated Cold Brew";
 
 - (void)statusItemClicked:(NSStatusItem *)sender
 {
-  NSLog(@"Action");
   if ([self isRightClick]) {
-    NSLog(@"Was right click");
     [self.statusItem popUpStatusItemMenu:[self statusMenu]];
     return;
   }
 
   self.on = !self.on;
-  [self setImage:self.on];
   [self caffinate:self.on];
 }
 
@@ -141,24 +135,19 @@ static NSString * const AssertionReason = @"User activated Cold Brew";
 
 - (void)caffinate:(BOOL)keepAwake
 {
-  NSLog(@"Here: %@", keepAwake ? @"Yes": @"NO");
   if (keepAwake) {
-    NSLog(@"Adding");
     BOOL success = [self createAssertion];
-    if (success) {
-      NSLog(@"Successs time");
-    } else {
-      NSLog(@"Create fail");
+    if (!success) {
+      self.on = !self.on;
     }
   } else {
-    NSLog(@"Removing");
     BOOL success = [self removeAssertion];
-    if (success) {
-      NSLog(@"Success release");
-    } else {
-      NSLog(@"Failed release");
+    if (!success) {
+      self.on = !self.on;
     }
   }
+
+  [self setImage:self.on];
 }
 
 - (BOOL)createAssertion
