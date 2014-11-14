@@ -5,6 +5,10 @@ dark mode compatible icon.
 
 [caffeine]: http://lightheadsw.com/caffeine/
 
+Download the latest release
+[**here**](https://github.com/Keithbsmiley/ColdBrew/releases) (it is not
+signed)
+
 ## Usage
 
 - Left click to keep your display awake indefinitely.
@@ -12,6 +16,6 @@ dark mode compatible icon.
 
 ### Known Issues
 
-After toggling the menu a few times you have to right click the icon
+- After toggling the menu a few times you have to right click the icon
 after the menu closes to unhighlight the status bar icon. I think this
 is a bug in Yosemite.
