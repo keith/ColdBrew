@@ -1,9 +1,9 @@
 # ColdBrew
 
-This is a blatent ripoff of [caffeine][]. Luckily this has a retina and
+This is a blatent ripoff of [caffeine][caffeine]. Luckily this has a retina and
 dark mode compatible icon.
 
-[]: http://lightheadsw.com/caffeine/
+[caffeine]: http://lightheadsw.com/caffeine/
 
 ## Usage
 
