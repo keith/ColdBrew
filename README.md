@@ -19,3 +19,8 @@ signed)
 - After toggling the menu a few times you have to right click the icon
 after the menu closes to unhighlight the status bar icon. I think this
 is a bug in Yosemite.
+
+### Attributions
+
+- Status bar icon from [pictos](http://pictos.cc/)
+- Logic from [QA1340](https://developer.apple.com/library/mac/qa/qa1340/_index.html)
