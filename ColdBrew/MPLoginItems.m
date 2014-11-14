@@ -41,10 +41,12 @@
     LSSharedFileListItemRef itemRef = (LSSharedFileListItemRef)item;
     CFErrorRef error = NULL;
     NSURL *thePath = (NSURL *)LSSharedFileListItemCopyResolvedURL(itemRef, 0, &error);
-    if (thePath)
+    if (thePath) {
       [items addObject:thePath];
-
+      CFRelease(thePath);
+    }
   }
+
   CFRelease(loginItems);
   [loginItemsArray release];
 
@@ -56,10 +58,8 @@
   NSArray *loginItems = [self loginItems];
 
   BOOL found = NO;
-  for (NSURL *item in loginItems)
-  {
-    if ([[item path] hasPrefix:[theURL path]])
-    {
+  for (NSURL *item in loginItems) {
+    if ([[item path] hasPrefix:[theURL path]]) {
       found = YES;
       break;
     }
@@ -88,8 +88,11 @@
     CFErrorRef error = NULL;
     NSURL *thePath = (NSURL *)LSSharedFileListItemCopyResolvedURL(itemRef, 0, &error);
     if (thePath) {
-      if ([[(NSURL *)thePath path] hasPrefix:[theURL path]])
+      if ([[thePath path] hasPrefix:[theURL path]]) {
         LSSharedFileListItemRemove(loginItems, itemRef);
+      }
+
+      CFRelease(thePath);
     }
   }
   
