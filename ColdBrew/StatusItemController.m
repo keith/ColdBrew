@@ -41,12 +41,14 @@ static NSString * const AssertionReason = @"User activated Cold Brew";
 {
   self.statusItem = [[NSStatusBar systemStatusBar]
                      statusItemWithLength:NSSquareStatusItemLength];
-  self.statusItem.highlightMode = YES;
   self.statusItem.button.target = self;
   self.statusItem.button.action = @selector(statusItemClicked:);
   NSInteger mask = NSLeftMouseDownMask | NSRightMouseDownMask;
   [self.statusItem.button sendActionOn:mask];
-  [self setImage:self.on];
+  NSImage *image = [NSImage imageNamed:@"active"];
+  [image setTemplate:YES];
+  self.statusItem.image = image;
+  [self setState:self.on];
 }
 
 - (NSMenu *)statusMenu
@@ -121,16 +123,9 @@ static NSString * const AssertionReason = @"User activated Cold Brew";
   [self caffinate:self.on];
 }
 
-- (void)setImage:(BOOL)active
+- (void)setState:(BOOL)active
 {
-  NSString *imageName = @"inactive";
-  if (active) {
-    imageName = @"active";
-  }
-
-  NSImage *image = [NSImage imageNamed:imageName];
-  [image setTemplate:YES];
-  self.statusItem.image = image;
+  self.statusItem.button.appearsDisabled = !active;
 }
 
 - (void)caffinate:(BOOL)keepAwake
@@ -147,7 +142,7 @@ static NSString * const AssertionReason = @"User activated Cold Brew";
     }
   }
 
-  [self setImage:self.on];
+  [self setState:self.on];
 }
 
 - (BOOL)createAssertion
@@ -175,6 +170,5 @@ static NSString * const AssertionReason = @"User activated Cold Brew";
 
   return success;
 }
-
 
 @end
