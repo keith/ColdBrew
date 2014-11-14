@@ -7,8 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import "StatusItemController.h"
 
 @interface AppDelegate ()
+
+@property (nonatomic) StatusItemController *statusItemController;
 
 @end
 
@@ -16,10 +19,12 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+  self.statusItemController = [[StatusItemController alloc] initWithState:NO];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
 {
+  [self.statusItemController tearDown];
 }
 
 @end
