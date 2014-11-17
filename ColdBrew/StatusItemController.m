@@ -147,7 +147,7 @@ static NSString * const AssertionReason = @"User activated Cold Brew";
 
 - (BOOL)createAssertion
 {
-  CFStringRef type = kIOPMAssertionTypePreventUserIdleSystemSleep;
+  CFStringRef type = kIOPMAssertPreventUserIdleDisplaySleep;
   IOPMAssertionLevel level = kIOPMAssertionLevelOn;
   CFStringRef reason = (__bridge CFStringRef)(AssertionReason);
   IOReturn status = IOPMAssertionCreateWithName(type, level,
