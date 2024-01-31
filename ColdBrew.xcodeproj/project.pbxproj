@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,7 +13,7 @@
 		C2B486EA1A1680EC007FFDEE /* StatusItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B486E91A1680EC007FFDEE /* StatusItemController.m */; };
 		C2B486F11A16A838007FFDEE /* NSMenuItem+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B486F01A16A838007FFDEE /* NSMenuItem+Additions.m */; };
 		C2B486FD1A16ABD7007FFDEE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2B486FC1A16ABD7007FFDEE /* Images.xcassets */; };
-		C2B487041A16B156007FFDEE /* MPLoginItems.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B487031A16B156007FFDEE /* MPLoginItems.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C2B487041A16B156007FFDEE /* MPLoginItems.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B487031A16B156007FFDEE /* MPLoginItems.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -Wno-deprecated-declarations"; }; };
 		C2B487081A16B4AC007FFDEE /* NSBundle+LoginItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B487071A16B4AC007FFDEE /* NSBundle+LoginItem.m */; };
 /* End PBXBuildFile section */
 
@@ -142,6 +142,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -170,6 +171,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		BE7703DBF4ECDC7B9BD66316 /* Warn for TODO and FIXME comments */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -261,7 +263,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -313,7 +315,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
@@ -326,7 +328,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = ColdBrew/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.smileykeith.ColdBrew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -338,7 +344,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = ColdBrew/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.smileykeith.ColdBrew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

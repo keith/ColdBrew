@@ -43,11 +43,11 @@ static NSString * const AssertionReason = @"User activated Cold Brew";
                      statusItemWithLength:NSSquareStatusItemLength];
   self.statusItem.button.target = self;
   self.statusItem.button.action = @selector(statusItemClicked:);
-  NSInteger mask = NSLeftMouseDownMask | NSRightMouseDownMask;
+  NSEventMask mask = NSEventMaskLeftMouseDown | NSEventMaskRightMouseDown;
   [self.statusItem.button sendActionOn:mask];
   NSImage *image = [NSImage imageNamed:@"active"];
   [image setTemplate:YES];
-  self.statusItem.image = image;
+  self.statusItem.button.image = image;
   [self setState:self.on];
 }
 
@@ -66,8 +66,13 @@ static NSString * const AssertionReason = @"User activated Cold Brew";
   [menu addItem:loginItem];
   [menu addItem:[NSMenuItem separatorItem]];
   [menu addItem:quitItem];
+  menu.delegate = self;
 
   return menu;
+}
+
+- (void)menuDidClose:(NSMenu *)menu {
+  self.statusItem.menu = nil;
 }
 
 - (void)toggleStartAtLogin:(NSMenuItem *)item
@@ -81,9 +86,9 @@ static NSString * const AssertionReason = @"User activated Cold Brew";
   item.state = [self openAtLoginState];
 }
 
-- (NSCellStateValue)openAtLoginState
+- (NSControlStateValue)openAtLoginState
 {
-  return [[NSBundle mainBundle] isLoginItem] ? NSOnState : NSOffState;
+  return [[NSBundle mainBundle] isLoginItem] ? NSControlStateValueOn : NSControlStateValueOff;
 }
 
 - (void)quit
@@ -107,8 +112,8 @@ static NSString * const AssertionReason = @"User activated Cold Brew";
 - (BOOL)isRightClick
 {
   NSEvent *currentEvent = [NSApp currentEvent];
-  BOOL rightClick = currentEvent.type == NSRightMouseDown;
-  BOOL controlClick = (currentEvent.modifierFlags & NSControlKeyMask) == NSControlKeyMask;
+  BOOL rightClick = currentEvent.type == NSEventTypeRightMouseDown;
+  BOOL controlClick = (currentEvent.modifierFlags & NSEventModifierFlagControl) == NSEventModifierFlagControl;
   return rightClick || controlClick;
 }
 
@@ -117,6 +122,8 @@ static NSString * const AssertionReason = @"User activated Cold Brew";
   if ([self isRightClick]) {
     [self.statusItem popUpStatusItemMenu:[self statusMenu]];
     return;
+  } else {
+    self.statusItem.menu = nil;
   }
 
   self.on = !self.on;
