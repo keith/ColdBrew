@@ -9,7 +9,7 @@
 @import AppKit;
 @import Foundation;
 
-@interface StatusItemController<NSMenuDelegate> : NSObject
+@interface StatusItemController : NSObject <NSMenuDelegate>
 
 - (instancetype)initWithState:(BOOL)on;
 - (void)tearDown;
