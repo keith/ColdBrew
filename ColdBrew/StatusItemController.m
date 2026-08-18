@@ -120,7 +120,10 @@ static NSString * const AssertionReason = @"User activated Cold Brew";
 - (void)statusItemClicked:(NSStatusItem *)sender
 {
   if ([self isRightClick]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [self.statusItem popUpStatusItemMenu:[self statusMenu]];
+#pragma clang diagnostic pop
     return;
   } else {
     self.statusItem.menu = nil;
